@@ -8,21 +8,23 @@ public class PlayerController : MonoBehaviour
     private PlayerInputReader inputReader;
     private IMovable movable;
     private ILookable lookable;
+    private IJumpable jumpable;
 
     // TODO (Reactivo 1): conecta el salto.
     //
     // 1. Crea la interfaz IJumpable en su propio archivo (mira IMovable como ejemplo).
-    // 2. Aquí obtén un IJumpable igual que se obtiene el IMovable.
+    // 2. Aquï¿½ obtï¿½n un IJumpable igual que se obtiene el IMovable.
     //    OJO: este script solo puede conocer la INTERFAZ, nunca PlayerMovement.
-    // 3. Cuando el InputReader avise que se presionó el salto, llama al salto.
-    //    Pista: suscríbete al evento que creaste en PlayerInputReader.
-    //    ¿Dónde se suscribe y dónde se desuscribe? (piensa en OnEnable / OnDisable)
+    // 3. Cuando el InputReader avise que se presionï¿½ el salto, llama al salto.
+    //    Pista: suscrï¿½bete al evento que creaste en PlayerInputReader.
+    //    ï¿½Dï¿½nde se suscribe y dï¿½nde se desuscribe? (piensa en OnEnable / OnDisable)
 
     void Awake()
     {
         inputReader = GetComponent<PlayerInputReader>();
         movable = GetComponent<IMovable>();
         lookable = cameraTransform.GetComponent<ILookable>();
+        jumpable = GetComponent<IJumpable>();
     }
 
     void Update()
@@ -31,6 +33,9 @@ public class PlayerController : MonoBehaviour
 
         Vector2 direction = CameraRelative(inputReader.MoveInput);
         movable.Move(direction);
+        Vector2 directionUp = CameraRelative(inputReader.JumpInput);
+        jumpable.Jump(directionUp);
+        
     }
 
     private Vector2 CameraRelative(Vector2 input)
