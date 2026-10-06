@@ -32,7 +32,7 @@ public class CoinSpawner : MonoBehaviour
     {
         pool.Get(new Vector3(Random.Range(minXZ.x, maxXZ.x), spawnHeight, Random.Range(minXZ.y, maxXZ.y)));
         
-
+        
         return;
     }
 }
