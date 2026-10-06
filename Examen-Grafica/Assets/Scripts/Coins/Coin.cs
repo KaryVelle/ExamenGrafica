@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
@@ -13,9 +14,14 @@ public class Coin : MonoBehaviour
     //
     // Pista: usa el operador ?. al invocar el evento por si nadie escucha.
 
+    public Action<Coin> OnCoinCollected;
+
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
+
+       OnCoinCollected?.Invoke(this);
+
 
         // TODO: dispara el evento aquí
     }

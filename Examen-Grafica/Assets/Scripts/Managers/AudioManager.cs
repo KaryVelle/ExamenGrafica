@@ -15,4 +15,7 @@ public class AudioManager : MonoBehaviour
     //    Hay un método de AudioSource que lanza un clip sin interrumpir los demás.
     //
     // REGLA: nadie llama al AudioManager directamente. Solo escucha.
+
+    AudioSource audioSource;
+
 }
