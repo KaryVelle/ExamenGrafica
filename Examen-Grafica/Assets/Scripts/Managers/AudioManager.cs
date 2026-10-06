@@ -1,18 +1,35 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioClip coinClip;
+    [SerializeField] private AudioSource audioClip;
 
     // TODO (Reactivo 5): reproduce el sonido cada vez que se recoge una moneda.
     //
-    // 1. Obtén el AudioSource (RequireComponent ya garantiza que existe).
+    // 1. Obtï¿½n el AudioSource (RequireComponent ya garantiza que existe).
+    
     // 2. Escucha el evento de moneda recogida.
-    //    Suscríbete en OnEnable y desuscríbete en OnDisable.
+    //    Suscrï¿½bete en OnEnable y desuscrï¿½bete en OnDisable.
+    private void OnEnable()
+    {
+        Coin.CoinColleted += CoinColleted;
+        AudioSource.Instantiate(audioClip);
+    }
+    void CoinColleted(Coin obj)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnDisable()
+    {
+        Coin.CoinColleted += CoinColleted;
+    }
     // 3. Al recibir el evento, reproduce `coinClip`.
-    //    Pista: si recoges monedas muy rápido, el sonido no debe cortarse.
-    //    Hay un método de AudioSource que lanza un clip sin interrumpir los demás.
+    //    Pista: si recoges monedas muy rï¿½pido, el sonido no debe cortarse.
+    //    Hay un mï¿½todo de AudioSource que lanza un clip sin interrumpir los demï¿½s.
     //
     // REGLA: nadie llama al AudioManager directamente. Solo escucha.
 }
