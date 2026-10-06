@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovement : MonoBehaviour, IMovable
+public class PlayerMovement : MonoBehaviour, IMovable,  IJumpable
 {
     public float speed = 6f;
     public float gravity = -20f;
+    public float jumpHeight = 12f;
 
     // TODO (Reactivo 1): haz que esta clase también implemente IJumpable.
     //
@@ -35,5 +37,14 @@ public class PlayerMovement : MonoBehaviour, IMovable
         movement.y = verticalVelocity;
 
         controller.Move(movement * Time.deltaTime);
+    }
+
+    public void Jump(InputAction.CallbackContext  context)
+    {
+        if (controller.isGrounded)
+        {
+            Debug.Log("jump");
+            verticalVelocity = Mathf.Sqrt(jumpHeight * -2 * gravity);
+        }
     }
 }

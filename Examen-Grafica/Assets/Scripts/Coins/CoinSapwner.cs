@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CoinSpawner : MonoBehaviour
@@ -27,4 +29,8 @@ public class CoinSpawner : MonoBehaviour
     // PROHIBIDO: Instantiate y Destroy para las monedas.
     //
     // Extra opcional: OnDrawGizmosSelected para dibujar el área en la Scene view.
+    private void Start()
+    {
+        
+    }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerInputReader))]
 public class PlayerController : MonoBehaviour
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInputReader inputReader;
     private IMovable movable;
     private ILookable lookable;
+    private IJumpable jumpable;
 
     // TODO (Reactivo 1): conecta el salto.
     //
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         inputReader = GetComponent<PlayerInputReader>();
         movable = GetComponent<IMovable>();
+        jumpable = GetComponent<IJumpable>();
         lookable = cameraTransform.GetComponent<ILookable>();
     }
 

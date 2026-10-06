@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
@@ -15,8 +17,12 @@ public class Coin : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
-
+        if (!other.CompareTag("Player"))
+        {
         // TODO: dispara el evento aquí
+        public Action<CoinSpawner> OnCoinSpawner;
+        return;
+        }
     }
+
 }
