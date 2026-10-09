@@ -1,7 +1,10 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    public GameObject coinPrefab;
     // TODO (Reactivo 6): avisa que la moneda fue recogida.
     //
     // - Declara un evento público y estático que lleve la moneda como dato
@@ -13,10 +16,13 @@ public class Coin : MonoBehaviour
     //
     // Pista: usa el operador ?. al invocar el evento por si nadie escucha.
 
+    
     void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
-
-        // TODO: dispara el evento aquí
+        
+    // TODO: dispara el evento aquí
+    if (!other.CompareTag("Player"))return;
+        
     }
+
 }

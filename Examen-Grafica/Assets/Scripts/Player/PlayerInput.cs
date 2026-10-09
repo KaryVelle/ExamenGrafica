@@ -1,10 +1,16 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInputReader : MonoBehaviour
 {
+
     public Vector2 MoveInput { get; private set; }
     public Vector2 LookInput { get; private set; }
+    public Vector2 JumpInput { get; private set;}
+    public PlayerMovement playerMovement;
+    
+
 
     // TODO (Reactivo 1): agrega el salto a este script.
     //
@@ -17,24 +23,29 @@ public class PlayerInputReader : MonoBehaviour
 
     private InputAction moveAction;
     private InputAction lookAction;
+    private InputAction jumpAction;
 
     void Awake()
     {
         PlayerInput playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
         lookAction = playerInput.actions["Look"];
+        jumpAction = playerInput.actions["Jump"];
     }
 
     void OnEnable()
     {
         moveAction.Enable();
         lookAction.Enable();
+        jumpAction.performed += playerMovement.Jump;
+        
     }
 
     void OnDisable()
     {
         moveAction.Disable();
         lookAction.Disable();
+        jumpAction.performed -= playerMovement.Jump;
     }
 
     void Update()
@@ -42,4 +53,5 @@ public class PlayerInputReader : MonoBehaviour
         MoveInput = moveAction.ReadValue<Vector2>();
         LookInput = lookAction.ReadValue<Vector2>();
     }
+    
 }
