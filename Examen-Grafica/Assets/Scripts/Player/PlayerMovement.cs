@@ -1,20 +1,15 @@
+using Unity.Mathematics.Geometry;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovement : MonoBehaviour, IMovable
+public class PlayerMovement : MonoBehaviour, IMovable, IJumpable
 {
     public float speed = 6f;
     public float gravity = -20f;
-
-    // TODO (Reactivo 1): haz que esta clase también implemente IJumpable.
+    public float jumpHeight = 2f;
+    // TODO (Reactivo 1): haz que esta clase tambiï¿½n implemente IJumpable.
     //
-    // - Agrega un campo público para la altura del salto (por ejemplo jumpHeight).
-    // - Implementa el método Jump().
-    // - Solo se puede saltar si el personaje está en el suelo.
-    //   Pista: CharacterController tiene una propiedad que lo indica.
-    // - El salto consiste en darle una velocidad vertical inicial hacia arriba.
-    //   Pista de física: v = sqrt(altura * -2 * gravedad)
-    //   Ya existe una variable que guarda la velocidad vertical. Úsala.
+    // - Agrega un campo pï¿½blico para la altura del salto (por ejemplo jumpHeight).
 
     private CharacterController controller;
     private float verticalVelocity;
@@ -35,5 +30,19 @@ public class PlayerMovement : MonoBehaviour, IMovable
         movement.y = verticalVelocity;
 
         controller.Move(movement * Time.deltaTime);
+    }
+    // - Implementa el mï¿½todo Jump().
+    // - Solo se puede saltar si el personaje estï¿½ en el suelo.
+    //   Pista: CharacterController tiene una propiedad que lo indica.
+    // - El salto consiste en darle una velocidad vertical inicial hacia arriba.
+    //   Pista de fï¿½sica: v = sqrt(altura * -2 * gravedad)
+    //   Ya existe una variable que guarda la velocidad vertical. ï¿½sala.
+
+    public void Jump()
+    {
+        if (controller.isGrounded)
+        {
+            verticalVelocity = Mathf.Sqrt(jumpHeight *-2* gravity );
+        }
     }
 }

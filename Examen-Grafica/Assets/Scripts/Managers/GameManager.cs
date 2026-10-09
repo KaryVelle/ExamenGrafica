@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         }
         if (!isAllCoinsCollected)
         {
+            Debug.Log(totalCoins);
             totalPoints += pointsPerCoin;
             totalCoins++;
             OnChangeScore?.Invoke();
