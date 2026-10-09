@@ -26,11 +26,11 @@ public class CoinSpawner : MonoBehaviour
         return new Vector3(Random.Range(minXZ.x,maxXZ.x), spawnHeight, Random.Range(minXZ.y,maxXZ.y));
     }
 
-    void RecogerMoneda()
+    public void RecogerMoneda()
     {
         pool.Get(RandomizarMoneda());
     }
-    void RegresarMoneda(GameObject gameObject)
+    public void RegresarMoneda(GameObject gameObject)
     {
         pool.Return(gameObject);
         RecogerMoneda();
