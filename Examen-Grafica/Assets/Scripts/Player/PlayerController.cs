@@ -30,14 +30,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         lookable.Look(inputReader.LookInput);
-        Debug.Log("Paso algo");
-
         Vector2 direction = CameraRelative(inputReader.MoveInput);
         movable.Move(direction);
-        Vector2 directionUp = CameraRelative(inputReader.JumpInput);
-        jumpable.Jump();
-        
     }
+    
 
     private Vector2 CameraRelative(Vector2 input)
     {

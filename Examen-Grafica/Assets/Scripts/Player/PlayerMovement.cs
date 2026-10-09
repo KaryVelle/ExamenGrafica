@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour, IMovable, IJumpable
@@ -7,7 +9,7 @@ public class PlayerMovement : MonoBehaviour, IMovable, IJumpable
     public float gravity = -20f;
     public float jumpHeight = 1.5f;
 
-    // TODO (Reactivo 1): haz que esta clase tambien implemente IJumpable.
+    // TODO (Reactivo 1): haz que esta clase tambien implemente IJumpable
     //
     // - Agrega un campo p�blico para la altura del salto (por ejemplo jumpHeight).
     // - Implementa el motodo Jump().
@@ -19,21 +21,24 @@ public class PlayerMovement : MonoBehaviour, IMovable, IJumpable
 
     private CharacterController controller;
     private float verticalVelocity;
-    private float horizontalJump;
-
+    private PlayerInput playerInput;
     void Awake()
     {
         controller = GetComponent<CharacterController>();
     }
 
+    private void OnEnable()
+    {
+      
+    }
+
     public void Jump()
     {
-        if (!controller.isGrounded && horizontalJump < 0f)
+        if (controller.isGrounded)
         {
-            horizontalJump = 2f;
+            verticalVelocity = Mathf.Sqrt(jumpHeight * 2f * gravity);
+            Debug.Log("No salta");
         }
-
-        horizontalJump *= jumpHeight * Time.deltaTime;
     }
 
     public void Move(Vector2 direction)

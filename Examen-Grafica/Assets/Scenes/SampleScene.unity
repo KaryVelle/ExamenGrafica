@@ -1951,7 +1951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   coinClip: {fileID: 8300000, guid: cb0e846bdb6d9124d9c48a9fc5a04236, type: 3}
-  audioClip: {fileID: 2096645496}
+  audioClip: {fileID: 0}
 --- !u!114 &2096645499
 MonoBehaviour:
   m_ObjectHideFlags: 0

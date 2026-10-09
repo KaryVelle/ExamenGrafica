@@ -20,11 +20,12 @@ public class PlayerInputReader : MonoBehaviour
     private InputAction moveAction;
     private InputAction lookAction;
     private InputAction jumpAction;
-    public event Action OnJump;
+    public PlayerMovement move;
 
     void Awake()
     {
         PlayerInput playerInput = GetComponent<PlayerInput>();
+        move = GetComponent<PlayerMovement>();
         moveAction = playerInput.actions["Move"];
         lookAction = playerInput.actions["Look"];
         jumpAction = playerInput.actions["Jump"];
@@ -47,7 +48,7 @@ public class PlayerInputReader : MonoBehaviour
 
     private void HandleJump(InputAction.CallbackContext ctx)
     {
-        OnJump?.Invoke();
+        move.Jump();
     }
 
     void Update()
