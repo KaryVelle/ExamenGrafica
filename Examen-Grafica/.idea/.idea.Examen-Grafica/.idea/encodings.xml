@@ -3,6 +3,9 @@
   <component name="Encoding" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise">
     <file url="file://$PROJECT_DIR$/Assets/Scripts/Coins/Coin.cs" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/Coins/CoinSapwner.cs" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/Managers/AudioManager.cs" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/Managers/CanvasManager.cs" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInput.cs" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" charset="windows-1252" />

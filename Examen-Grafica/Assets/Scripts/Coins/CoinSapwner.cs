@@ -1,5 +1,3 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CoinSpawner : MonoBehaviour
@@ -11,6 +9,7 @@ public class CoinSpawner : MonoBehaviour
     [SerializeField] private Vector2 minXZ = new Vector2(-10f, -10f);
     [SerializeField] private Vector2 maxXZ = new Vector2(10f, 10f);
     [SerializeField] private float spawnHeight = 1f;
+    
 
     // TODO (Reactivo 2): maneja las monedas con el ObjectPool.
     //
@@ -20,6 +19,18 @@ public class CoinSpawner : MonoBehaviour
     // 1. Al iniciar (Start), saca `initialCoins` monedas del pool.
     //    Cada una en una posición aleatoria dentro del área.
     //    Pista: Random.Range(min, max) para X y para Z, y spawnHeight para Y.
+    public void start()
+
+    {
+        
+    }
+
+    private Vector3 RandomVecto3()
+    {
+        
+        return new Vector3(Random.Range(minXZ.x, maxXZ.x), 0f);
+    }
+
     // 2. Cuando una moneda sea recogida, regrésala al pool y saca otra
     //    en una nueva posición aleatoria.
     //    Pista: escucha el evento que creaste en Coin.
