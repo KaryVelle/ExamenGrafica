@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +20,7 @@ public class PlayerInputReader : MonoBehaviour
     private InputAction moveAction;
     private InputAction lookAction;
     private InputAction jumpAction;
+    public event Action OnJump;
 
     void Awake()
     {
@@ -33,6 +35,7 @@ public class PlayerInputReader : MonoBehaviour
         moveAction.Enable();
         lookAction.Enable();
         jumpAction.Enable();
+        jumpAction.performed += HandleJump;
     }
 
     void OnDisable()
@@ -42,10 +45,14 @@ public class PlayerInputReader : MonoBehaviour
         jumpAction.Disable();
     }
 
+    private void HandleJump(InputAction.CallbackContext ctx)
+    {
+        OnJump?.Invoke();
+    }
+
     void Update()
     {
         MoveInput = moveAction.ReadValue<Vector2>();
         LookInput = lookAction.ReadValue<Vector2>();
-        LookInput = jumpAction.ReadValue<Vector2>();
     }
 }
