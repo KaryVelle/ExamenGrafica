@@ -22,13 +22,15 @@ public class PlayerInputReader : MonoBehaviour
     private InputAction lookAction;
     private InputAction jumpAction;
 
+    private PlayerMovement player;
+
     void Awake()
     {
         PlayerInput playerInput = GetComponent<PlayerInput>();
+        player = GetComponent<PlayerMovement>();
         moveAction = playerInput.actions["Move"];
         lookAction = playerInput.actions["Look"];
         jumpAction = playerInput.actions["Jump"];
-
     }
 
     void OnEnable()
@@ -42,16 +44,16 @@ public class PlayerInputReader : MonoBehaviour
     {
         moveAction.Disable();
         lookAction.Disable();
-        jumpAction.Disable();
     }
 
     void Update()
     {
         MoveInput = moveAction.ReadValue<Vector2>();
-        LookInput = lookAction.ReadValue<Vector2>(); 
+        LookInput = lookAction.ReadValue<Vector2>();
     }
     void Testing(InputAction.CallbackContext ctx)
     {
         Debug.Log("Ya brinque yupiiii");
+        player.Jump();
     }
 }

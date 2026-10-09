@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    public static Action<Coin> coinAction;
+    public static Action<GameObject> coinCollected;
 
     // TODO (Reactivo 6): avisa que la moneda fue recogida.
     //
@@ -20,7 +20,7 @@ public class Coin : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        coinAction?.Invoke(this);
+        coinCollected?.Invoke(this.gameObject);
         // TODO: dispara el evento aqu�
     }
 

@@ -13,11 +13,11 @@ public class AudioManager : MonoBehaviour
 
     void OnEnable()
     {
-        Coin.coinAction += ActivateAudio;
+       // Coin.coinCollected += ActivateAudio;
     }
     void OnDisable()
     {
-        Coin.coinAction -= ActivateAudio;
+        //Coin.coinCollected -= ActivateAudio;
     }
     void ActivateAudio(Coin coin)
     {
